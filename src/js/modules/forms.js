@@ -2,7 +2,8 @@ import checkNumInputs from './checkNumInputs';
 
 const forms = (state) => {
     const form = document.querySelectorAll('form'),
-          inputs = document.querySelectorAll('input');
+          inputs = document.querySelectorAll('input'),
+          windows = document.querySelectorAll('[dtata-modal]');
 
     checkNumInputs('input[name="user_phone"]');
     
@@ -41,6 +42,15 @@ const forms = (state) => {
                 for (let key in state) {
                     formData.append(key, state[key]);
                 }
+
+                setTimeout(function(){
+                    windows.forEach(item =>{
+                        item.style.display = 'none';
+                    });
+                    for (let key in state) {
+                        delete state[key];
+                    }
+                },1000);
             }
 
             postData('assets/server.php', formData)
