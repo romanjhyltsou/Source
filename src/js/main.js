@@ -7,7 +7,7 @@ import timer from './modules/timer';
 import images from './modules/images';
 
 window.addEventListener('DOMContentLoaded', () => {
-    "use strict";
+    "use strict"; 
 
     let modalState = {};
     let deadline = '2022-06-25';

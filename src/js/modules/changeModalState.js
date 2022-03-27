@@ -15,7 +15,7 @@ const changeModalState = (state) => {
             item.addEventListener(event, () => {
                 switch(item.nodeName) {
                     case 'SPAN' :
-                        state[prop] = i;
+                        state[prop] = i + 1;
                         break;
                     case 'INPUT' :
                         if (item.getAttribute('type') === 'checkbox') {
@@ -34,11 +34,22 @@ const changeModalState = (state) => {
                         state[prop] = item.value;
                         break;
                 }
-
+                if(Object.keys(state).length === 3 ){
+                    document.querySelector('.popup_calc_button').removeAttribute('disabled');
+                }else{
+                    console.log('Заполните все поля'); 
+                }
+                if(Object.keys(state).length === 5 ){
+                    document.querySelector('.popup_calc_profile_button').removeAttribute('disabled');
+                }else{
+                    console.log('Заполните все поля'); 
+                }
+                
                 console.log(state);
             });
         });
     }
+
 
     bindActionToElems('click', windowForm, 'form');
     bindActionToElems('input', windowHeight, 'height');
